@@ -26,6 +26,8 @@ sudo easy_install pip
 sudo python2.7 -m pip install -U platformio
 sudo rm -rf $HOME/.platformio/
 
+sudo pip install jinja2
+
 source /opt/ros/$ROSDISTRO/setup.bash
 
 cd $HOME
