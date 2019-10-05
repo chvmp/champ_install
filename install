@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+set -e
+
+source /opt/ros/$(dir /opt/ros)/setup.bash
+
+ROSDISTRO="$(rosversion -d)"
+BASE=$1
+SENSOR=$2
+ARCH="$(uname -m)"
+echo $ARCH
+
+echo
+echo "INSTALLING NOW...."
+echo
+
+sudo apt-get update
+sudo apt-get install -y \
+avahi-daemon \
+openssh-server \
+python-setuptools \
+python-dev \
+build-essential 
+
+sudo easy_install pip
+sudo python2.7 -m pip install -U platformio
+sudo rm -rf $HOME/.platformio/
+
+source /opt/ros/$ROSDISTRO/setup.bash
+
+cd $HOME
+git clone https://github.com/Rimabo/pygazebo
+cd pygazebo
+sudo python setup.py install
+
+cd $HOME
+mkdir -p champ_ws/src
+cd $HOME/champ_ws/src
+catkin_init_workspace
+
+sudo apt-get install -y \
+ros-$ROSDISTRO-roslint \
+ros-$ROSDISTRO-rosserial \
+ros-$ROSDISTRO-rosserial-arduino \
+ros-$ROSDISTRO-imu-filter-madgwick \
+ros-$ROSDISTRO-gmapping \
+ros-$ROSDISTRO-map-server \
+ros-$ROSDISTRO-navigation \
+ros-$ROSDISTRO-robot-localization \
+ros-$ROSDISTRO-tf2 \
+ros-$ROSDISTRO-tf2-ros \
+ros-$ROSDISTRO-tf2-ros \
+ros-$ROSDISTRO-gazebo-* \
+ros-$ROSDISTRO-moveit-ros-planning-interface \
+ros-$ROSDISTRO-geometric-shapes
+
+cd $HOME/champ_ws/src
+git clone https://github.com/chvmp/champ_setup_assistant
+git clone https://github.com/chvmp/visualization
+git clone https://github.com/chvmp/yocs_velocity_smoother
+git clone https://github.com/chvmp/teleop_twist_keyboard
+git clone https://github.com/chvmp/common-sensors
+git clone https://github.com/grassjelly/champ
+
+cd $HOME/champ_ws/src/champ/champ_base
+TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
+if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
+
+cd $HOME/champ_ws/src/champ/champ_base/firmware
+export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
+platformio ci --project-conf=./platformio.ini \
+    --lib="./lib/ros_lib" \
+    --lib="./lib/BasicLinearAlgebra" \
+    --lib="./lib/Geometry" \
+    --lib="./lib/quadruped_balancer" \
+    --lib="./lib/quadruped_base" \
+    --lib="./lib/quadruped_gait" \
+    --lib="./lib/quadruped_ik" \
+    --lib="$HOME/champ_ws/src/champ/champ_config/include/firmware"
+
+echo "source $HOME/champ_ws/devel/setup.bash" >> $HOME/.bashrc
+source $HOME/.bashrc
+
+cd $HOME/champ_ws
+catkin_make --pkg champ_msgs
+catkin_make
+
+echo
+echo "INSTALLATION DONE!"
+echo
