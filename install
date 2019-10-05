@@ -52,6 +52,7 @@ ros-$ROSDISTRO-tf2-ros \
 ros-$ROSDISTRO-tf2-ros \
 ros-$ROSDISTRO-gazebo-* \
 ros-$ROSDISTRO-moveit-ros-planning-interface \
+ros-$ROSDISTRO-ecl-threads \
 ros-$ROSDISTRO-geometric-shapes
 
 cd $HOME/champ_ws/src
