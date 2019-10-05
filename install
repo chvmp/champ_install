@@ -57,7 +57,11 @@ ros-$ROSDISTRO-moveit-ros-planning-interface \
 ros-$ROSDISTRO-ecl-threads \
 ros-$ROSDISTRO-geometric-shapes \
 ros-$ROSDISTRO-openni-launch \
-ros-$ROSDISTRO-depthimage-to-laserscan
+ros-$ROSDISTRO-depthimage-to-laserscan \
+ros-$ROSDISTRO-ros-controllers \
+ros-$ROSDISTRO-ros-control \
+ros-$ROSDISTRO-robot-state-publisher \ 
+ros-$ROSDISTRO-joint-state-publisher
 
 cd $HOME/champ_ws/src
 git clone https://github.com/chvmp/champ_setup_assistant
