@@ -61,7 +61,7 @@ ros-$ROSDISTRO-ros-control \
 ros-$ROSDISTRO-robot-state-publisher \
 ros-$ROSDISTRO-joint-state-publisher
 
-GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version).*(?=)')
+GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
 
 if [ $GAZEBO_VERSION == 7.0.0 ]
     then
