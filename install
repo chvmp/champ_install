@@ -63,7 +63,7 @@ ros-$ROSDISTRO-joint-state-publisher
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version).*(?=)')
 
-if [ $GAZEBO_VERSION == 7.16.0 ]
+if [ $GAZEBO_VERSION == 7.0.0 ]
     then
         sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
         wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
