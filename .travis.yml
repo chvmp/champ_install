@@ -28,7 +28,7 @@ install:
 script: 
   - cd
   - git clone https://github.com/chvmp/chvmp_install
-  - cd chvmp_install
+  - cd champ_install
   - ./install
 
 notifications:
