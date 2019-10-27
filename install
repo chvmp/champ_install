@@ -95,6 +95,7 @@ else
     wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_armhf.deb
     sudo dpkg -i python-gudev_147.2-3_armhf.deb
     sudo apt install -f
+fi
 
 cd $HOME/champ_ws/src
 git clone https://github.com/chvmp/champ_setup_assistant
