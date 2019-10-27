@@ -82,6 +82,7 @@ sudo udevadm control --reload-rules && udevadm trigger
 
 cd $HOME/champ_ws/src
 git clone https://github.com/intel-ros/realsense.git
+cd realsense
 git checkout 1.8.1
 
 cd $HOME/champ_ws/src
