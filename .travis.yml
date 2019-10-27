@@ -2,10 +2,6 @@ sudo: required
 dist: bionic
 language: generic
 
-arch:
-  - amd64
-  - arm64
-
 matrix:
   include:
    - os: linux
