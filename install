@@ -85,29 +85,40 @@ git clone https://github.com/intel-ros/realsense.git
 cd realsense
 git checkout 1.8.1
 
+if [ $ARCH == "x86_64" ]
+    then
+        wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_amd64.deb
+        sudo dpkg -i python-gudev_147.2-3_armhf.deb
+        sudo apt install -f
+
+else  
+    wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_armhf.deb
+    sudo dpkg -i python-gudev_147.2-3_armhf.deb
+    sudo apt install -f
+
 cd $HOME/champ_ws/src
 git clone https://github.com/chvmp/champ_setup_assistant
 git clone https://github.com/chvmp/visualization
 git clone https://github.com/chvmp/yocs_velocity_smoother
 git clone https://github.com/chvmp/teleop_twist_keyboard
 git clone https://github.com/chvmp/common-sensors
-git clone https://github.com/grassjelly/champ
+#git clone https://github.com/grassjelly/champ
 
-cd $HOME/champ_ws/src/champ/champ_base
-TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
-if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
+# cd $HOME/champ_ws/src/champ/champ_base
+# TRAVIS_BRANCH="echo $TRAVIS_BRANCH"
+# if [ "$TRAVIS_BRANCH" = "devel" ]; then git checkout devel; fi
 
-cd $HOME/champ_ws/src/champ/champ_base/firmware
-export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
-platformio ci --project-conf=./platformio.ini \
-    --lib="./lib/ros_lib" \
-    --lib="./lib/BasicLinearAlgebra" \
-    --lib="./lib/Geometry" \
-    --lib="./lib/quadruped_balancer" \
-    --lib="./lib/quadruped_base" \
-    --lib="./lib/quadruped_gait" \
-    --lib="./lib/quadruped_ik" \
-    --lib="$HOME/champ_ws/src/champ/champ_config/include/firmware"
+# cd $HOME/champ_ws/src/champ/champ_base/firmware
+# export PLATFORMIO_CI_SRC=$PWD/src/firmware.ino
+# platformio ci --project-conf=./platformio.ini \
+#     --lib="./lib/ros_lib" \
+#     --lib="./lib/BasicLinearAlgebra" \
+#     --lib="./lib/Geometry" \
+#     --lib="./lib/quadruped_balancer" \
+#     --lib="./lib/quadruped_base" \
+#     --lib="./lib/quadruped_gait" \
+#     --lib="./lib/quadruped_ik" \
+#     --lib="$HOME/champ_ws/src/champ/champ_config/include/firmware"
 
 echo "source $HOME/champ_ws/devel/setup.bash" >> $HOME/.bashrc
 source $HOME/.bashrc
