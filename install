@@ -22,7 +22,7 @@ python-setuptools \
 python-dev \
 build-essential 
 
-sudo easy_install pip
+sudo apt-get install -y python-pip
 sudo python2.7 -m pip install -U platformio
 sudo rm -rf $HOME/.platformio/
 
@@ -54,7 +54,8 @@ ros-$ROSDISTRO-gazebo-* \
 ros-$ROSDISTRO-ros-controllers \
 ros-$ROSDISTRO-ros-control \
 ros-$ROSDISTRO-robot-state-publisher \
-ros-$ROSDISTRO-joint-state-publisher
+ros-$ROSDISTRO-joint-state-publisher \
+ros-$ROSDISTRO-pcl-ros
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
 
@@ -71,6 +72,19 @@ mkdir -p champ_ws/src
 cd $HOME/champ_ws/src
 catkin_init_workspace
 
+#install r200 driver
+sudo apt-get install -y libusb-1.0-0-dev pkg-config libglfw3-dev
+git clone https://github.com/chvmp/librealsense
+cd librealsense
+git checkout v1.12.4
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && udevadm trigger
+
+cd $HOME/champ_ws/src
+git clone https://github.com/intel-ros/realsense.git
+git checkout 1.8.1
+
+cd $HOME/champ_ws/src
 git clone https://github.com/chvmp/champ_setup_assistant
 git clone https://github.com/chvmp/visualization
 git clone https://github.com/chvmp/yocs_velocity_smoother
