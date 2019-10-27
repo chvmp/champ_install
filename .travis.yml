@@ -27,7 +27,7 @@ install:
 
 script: 
   - cd
-  - git clone https://github.com/chvmp/chvmp_install
+  - git clone https://github.com/chvmp/champ_install
   - cd champ_install
   - ./install
 
