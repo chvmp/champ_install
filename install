@@ -55,6 +55,7 @@ ros-$ROSDISTRO-ros-controllers \
 ros-$ROSDISTRO-ros-control \
 ros-$ROSDISTRO-robot-state-publisher \
 ros-$ROSDISTRO-joint-state-publisher \
+ros-$ROSDISTRO-laser-filters \
 ros-$ROSDISTRO-pcl-ros
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
@@ -92,11 +93,17 @@ if [ $ARCH == "x86_64" ]
         sudo dpkg -i python-gudev_147.2-3_amd64.deb
         sudo apt install -f
 
-else  
-    sudo apt-get install -y python-gobject
-    wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_arm64.deb
-    sudo dpkg -i python-gudev_147.2-3_arm64.deb
-    sudo apt install -f
+elif [ $ARCH == "arm64" ]
+    then
+        sudo apt-get install -y python-gobject
+        wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_arm64.deb
+        sudo dpkg -i python-gudev_147.2-3_arm64.deb
+        sudo apt install -f
+else 
+        sudo apt-get install -y python-gobject
+        wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_armhf.deb
+        sudo dpkg -i python-gudev_147.2-3_armhf.deb
+        sudo apt install -f
 fi
 
 cd $HOME/champ_ws/src
