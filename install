@@ -87,13 +87,15 @@ git checkout 1.8.1
 
 if [ $ARCH == "x86_64" ]
     then
+        sudo apt-get install -y python-gobject
         wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_amd64.deb
         sudo dpkg -i python-gudev_147.2-3_amd64.deb
         sudo apt install -f
 
 else  
-    wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_armhf.deb
-    sudo dpkg -i python-gudev_147.2-3_armhf.deb
+    sudo apt-get install -y python-gobject
+    wget https://launchpad.net/ubuntu/+archive/primary/+files/python-gudev_147.2-3_arm64.deb
+    sudo dpkg -i python-gudev_147.2-3_arm64.deb
     sudo apt install -f
 fi
 
