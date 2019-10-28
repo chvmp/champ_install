@@ -127,7 +127,7 @@ echo "source $HOME/champ_ws/devel/setup.bash" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 cd $HOME/champ_ws
-catkin_make --pkg champ_msgs
+#catkin_make --pkg champ_msgs
 catkin_make
 
 echo
