@@ -100,11 +100,12 @@ else
 fi
 
 cd $HOME/champ_ws/src
-git clone https://github.com/chvmp/champ_setup_assistant
-git clone https://github.com/chvmp/visualization
+
 git clone https://github.com/chvmp/yocs_velocity_smoother
 git clone https://github.com/chvmp/teleop_twist_keyboard
 git clone https://github.com/chvmp/common-sensors
+# git clone https://github.com/chvmp/champ_setup_assistant
+# git clone https://github.com/chvmp/visualization
 #git clone https://github.com/grassjelly/champ
 
 # cd $HOME/champ_ws/src/champ/champ_base
