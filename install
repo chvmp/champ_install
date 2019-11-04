@@ -20,7 +20,8 @@ avahi-daemon \
 openssh-server \
 python-setuptools \
 python-dev \
-build-essential 
+build-essential \
+libgsl-dev
 
 sudo apt-get install -y python-pip
 sudo python2.7 -m pip install -U platformio
