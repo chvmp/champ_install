@@ -82,7 +82,7 @@ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules && udevadm trigger
 
 cd $HOME/champ_ws/src
-git clone https://github.com/intel-ros/realsense.git
+git clone https://github.com/intel-ros/realsense
 cd realsense
 git checkout 1.8.1
 
@@ -105,6 +105,11 @@ else
         sudo dpkg -i python-gudev_147.2-3_armhf.deb
         sudo apt install -f
 fi
+
+cd $HOME/champ_ws/src
+git clone git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam
+cd hector_slam
+git checkout melodic-devel
 
 cd $HOME/champ_ws/src
 
