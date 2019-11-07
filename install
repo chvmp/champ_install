@@ -51,13 +51,16 @@ ros-$ROSDISTRO-moveit-ros-planning-interface \
 ros-$ROSDISTRO-ecl-threads \
 ros-$ROSDISTRO-geometric-shapes \
 ros-$ROSDISTRO-depthimage-to-laserscan \
+ros-$ROSDISTRO-pointcloud-to-laserscan \
 ros-$ROSDISTRO-gazebo-* \
 ros-$ROSDISTRO-ros-controllers \
 ros-$ROSDISTRO-ros-control \
 ros-$ROSDISTRO-robot-state-publisher \
 ros-$ROSDISTRO-joint-state-publisher \
 ros-$ROSDISTRO-laser-filters \
-ros-$ROSDISTRO-pcl-ros
+ros-$ROSDISTRO-pcl-ros \
+ros-$ROSDISTRO-rtabmap-ros \
+
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
 
