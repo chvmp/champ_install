@@ -60,6 +60,8 @@ ros-$ROSDISTRO-joint-state-publisher \
 ros-$ROSDISTRO-laser-filters \
 ros-$ROSDISTRO-pcl-ros \
 ros-$ROSDISTRO-rtabmap-ros \
+ros-$ROSDISTRO-hector-gazebo-plugins \
+ros-$ROSDISTRO-imu-transformer
 
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
