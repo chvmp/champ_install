@@ -61,8 +61,7 @@ ros-$ROSDISTRO-laser-filters \
 ros-$ROSDISTRO-pcl-ros \
 ros-$ROSDISTRO-rtabmap-ros \
 ros-$ROSDISTRO-hector-gazebo-plugins \
-ros-$ROSDISTRO-imu-transformer
-
+ros-$ROSDISTRO-joy
 
 GAZEBO_VERSION=$(gazebo -v | grep -o -P '(?<=version ).*(?=)')
 
@@ -123,7 +122,7 @@ sudo make install
 cd $HOME/champ_ws/src
 git clone https://github.com/ccny-ros-pkg/scan_tools
 git clone https://github.com/chvmp/yocs_velocity_smoother
-git clone https://github.com/chvmp/teleop_twist_keyboard
+git clone https://github.com/chvmp/champ_teleop
 git clone https://github.com/chvmp/common-sensors
 # git clone https://github.com/chvmp/champ_setup_assistant
 # git clone https://github.com/chvmp/visualization
